@@ -1,0 +1,96 @@
+<div id="select">
+  <ion-item>
+    <ion-label>Selecciona una distribución</ion-label>
+    <ion-select placeholder="Seleccionar" cancelText="Cancelar" okText="Aceptar" [(ngModel)]="selectValue" (ionChange)="showForm()">
+      <ion-select-option value="normal">Normal</ion-select-option>
+      <ion-select-option value="exponencial">Exponencial</ion-select-option>
+      <ion-select-option value="poisson">Poisson</ion-select-option>
+      <ion-select-option value="binomial">Binomial</ion-select-option>
+      <ion-select-option value="binomial_negativa">Binomial negativa</ion-select-option>
+    </ion-select>
+  </ion-item>
+</div>
+
+<div *ngIf="selectValue == 'normal'" class="normal">
+  <ion-item>
+    <ion-label position="floating">x</ion-label>
+    <ion-input type="number" [(ngModel)]="x"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Mu de vaca</ion-label>
+    <ion-input type="number" [(ngModel)]="mu"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Sigma</ion-label>
+    <ion-input type="number" [(ngModel)]="sigma"></ion-input>
+  </ion-item>
+  <ion-button (click)="getProbability(selectValue)">
+    Calcular
+  </ion-button>
+</div>
+
+<div *ngIf="selectValue == 'exponencial'" class="normal">
+  <ion-item>
+    <ion-label position="floating">x</ion-label>
+    <ion-input type="number" [(ngModel)]="x"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">lambda</ion-label>
+    <ion-input type="number" [(ngModel)]="l"></ion-input>
+  </ion-item>
+  <ion-button (click)="getProbability(selectValue)">
+    Calcular
+  </ion-button>
+</div>
+
+<div *ngIf="selectValue == 'poisson'" class="normal">
+  <ion-item>
+    <ion-label position="floating">k</ion-label>
+    <ion-input type="number" [(ngModel)]="k"></ion-input>
+  </ion-item>
+  <ion-button (click)="getProbability(selectValue)">
+    Calcular
+  </ion-button>
+</div>
+
+<div *ngIf="selectValue == 'binomial'" class="normal">
+  <ion-item>
+    <ion-label position="floating">p</ion-label>
+    <ion-input type="number" [(ngModel)]="p"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">n</ion-label>
+    <ion-input type="number" [(ngModel)]="n"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">x</ion-label>
+    <ion-input type="number" [(ngModel)]="x"></ion-input>
+  </ion-item>
+  <ion-button (click)="getProbability(selectValue)">
+    Calcular
+  </ion-button>
+</div>
+
+<div *ngIf="selectValue == 'binomial_negativa'" class="normal">
+  <ion-item>
+    <ion-label position="floating">x</ion-label>
+    <ion-input type="number" [(ngModel)]="x"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">p</ion-label>
+    <ion-input type="number" [(ngModel)]="p"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">r</ion-label>
+    <ion-input type="number" [(ngModel)]="r"></ion-input>
+  </ion-item>
+  <ion-button (click)="getProbability(selectValue)">
+    Calcular
+  </ion-button>
+</div>
+
+<div *ngIf="data" class="normal">
+  <h1>{{ probabilidad(data['data']['probability']) }}</h1>
+</div>
+
+<div #myDiv></div>

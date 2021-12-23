@@ -1,0 +1,7 @@
+{
+  "name": "distribuciones",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
